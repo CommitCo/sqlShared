@@ -200,7 +200,7 @@ CREATE TABLE cliente (
   direccion VARCHAR(100),
   departamento VARCHAR(100),
   pais VARCHAR(100),
-  empleado_atiende INT NOT NULL,
+  empleado_atiende NUMERIC NOT NULL,
   creado TIMESTAMP
 );
 
