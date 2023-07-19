@@ -79,6 +79,3 @@ SELECT nombre_apellido, correo FROM aprendices ORDER BY edad DESC LIMIT 1;
 
 -- buscando correos que solo tenga de dominio el .com
 SELECT * FROM aprendices WHERE correo LIKE '%.com';
-
-
-
