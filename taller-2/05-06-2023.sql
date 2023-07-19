@@ -1,6 +1,10 @@
+-- Creando la base de datos
 CREATE DATABASE sena;
+
+-- Hacemos focus unicamente a la base de datos seleccionada.
 USE sena;
 
+-- Creamos tabla aprendices
 CREATE TABLE aprendices(
 id INT (20) UNIQUE PRIMARY KEY,
 nombre_apellido VARCHAR (50) UNIQUE NOT NULL,
@@ -11,6 +15,8 @@ ciudad VARCHAR(20) NOT NULL,
 estado ENUM('Activo', 'Inactivo') DEFAULT 'Inactivo',
 creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Insertamos registros a la tabla creada.
 INSERT INTO aprendices (id, nombre_apellido, correo, edad, direccion, ciudad, estado)
 VALUES
 ( 1075678987, 'Juan Pérez', 'juan@example.com', 25, 'Calle 123', 'Bogotá', 'Activo'),
@@ -29,34 +35,49 @@ VALUES
 ( 1076431232, 'Valeria Ríos', 'valeria@example.com', 25, 'Avenida 654', 'Sincelejo', 'Activo'),
 ( 5678345, 'Gabriel Mesa', 'gabriel@example.com', 23, 'Carrera 123', 'Ibagué', 'Inactivo');
 
+-- Se observa la tabla aprendices llamando unicamente la columba id
 SELECT id FROM aprendices;
 
+-- Obtenemos unicamente las columnas nombre_apellido y edad en la tabla aprendices.
 SELECT nombre_apellido, edad FROM aprendices;
 
+-- Se trae los datos nombre_apellido, edad y estado para la tabla aprendices.
 SELECT nombre_apellido, edad, estado FROM aprendices;
 
+-- Se hace la consulta de la tabla aprendices pero unicamente para la columna id, mostrandola diferente
 SELECT id FROM aprendices\G;
 
+-- Consulta que trae la data pintada diferente para las columnas nombre_apellido, edad y estado.
 SELECT nombre_apellido, edad, estado FROM aprendices\G;
 
+-- Buscamos todos los datos en la tabla aprendice mostrandolo mas especifico.
 SELECT * FROM aprendices\G;
 
+-- Hacemos la consulta de la tabla aprendices donde solo se trae los datos donde el id sea 1075678987
 SELECT * FROM aprendices WHERE id = 1075678987;
 
+-- Consulta para traer todos los registros que tengan este correo eylozano@sena.edu.co en la tabla aprendices
 SELECT * FROM aprendices WHERE correo = 'eylozano@sena.edu.co';
 
+-- Trae unicamente los registros que tengan mas de 24 años
 SELECT * FROM aprendices WHERE edad >= 24;
 
+-- Buscamos los registros que solo se hayan creado en esta fecha 2023-06-05 00:00:01
 SELECT * FROM aprendices WHERE creado > '2023-06-05 00:00:01';
 
+-- Consulta donde retorna los id en un rango
 SELECT * FROM aprendices WHERE id IN (1075678987, 5678345);
 
+-- Ordenamiento de la columna edad de menor a mayor.
 SELECT * FROM aprendices ORDER BY edad;
 
+-- Ordenamiento de la columna edad de mayor a menor.
 SELECT * FROM aprendices ORDER BY edad DESC;
 
+-- Buscamos las columnas nombre_apellido y ordenamos de mayor a menor, retornando un solo registro
 SELECT nombre_apellido, correo FROM aprendices ORDER BY edad DESC LIMIT 1;
 
+-- buscando correos que solo tenga de dominio el .com
 SELECT * FROM aprendices WHERE correo LIKE '%.com';
 
 
