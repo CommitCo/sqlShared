@@ -1,3 +1,4 @@
+------------------- EJERCICIO 1 ------------------
 -- Creando base de datos
 CREATE DATABASE CADPH;
 
@@ -59,9 +60,13 @@ DELETE FROM titulada WHERE id = 876123456;
 -- Eleminar los registros de la tabla.
 TRUNCATE TABLE Titulada;
 
-CREATE DATABASE FACTURACION;
-USE FACTURACION;
 
+------------------- EJERCICIO 2 ------------------
+-- Creamos la base datos a utilizar
+CREATE DATABASE FACTURACION;
+-- Asignamos la base de datos que utilizaremos
+USE FACTURACION;
+-- Creamos la tabla que representara a los clientes
 CREATE TABLE clientes(
     id_clientes VARCHAR (30) UNIQUE PRIMARY KEY,
     nombre VARCHAR (25) UNIQUE NOT NULL,
@@ -74,14 +79,14 @@ CREATE TABLE clientes(
     pais VARCHAR (20) CHECK (pais='Colombia'),
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+-- Creamos la tabla para las facturas.
 CREATE TABLE factura(
     num_factura VARCHAR (20) UNIQUE PRIMARY KEY,
     id_clientes VARCHAR (30),
     id_producto VARCHAR (30),
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+-- Creamos los productos del comercio.
 CREATE TABLE productos(
     id_producto VARCHAR (30) UNIQUE PRIMARY KEY,
     nombre VARCHAR (25) NOT NULL,
@@ -90,15 +95,59 @@ CREATE TABLE productos(
     num_factura VARCHAR (20),
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+-- Creamos llave foranea desde factura nombrandola como fk_clientes y haciendo referencia de la columna id_clientes en las dos tablas
 ALTER TABLE factura
 ADD CONSTRAINT fk_clientes
 FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes);
-
+-- Creamos la segunda llave foranea donde hará referencia a la columna id_producto en la tabla productos hacia esta tabla factura.
 ALTER TABLE factura
 ADD CONSTRAINT fk_productos
 FOREIGN KEY (id_producto) REFERENCES productos(id_producto);
-
+-- Creamos llave foranea haciendo referencia a la factura
 ALTER TABLE productos
 ADD CONSTRAINT fk_factura
 FOREIGN KEY (num_factura) REFERENCES factura(num_factura);
+-- Inicialmente ingresamos los productos existentes
+INSERT INTO productos (id_producto, nombre, precio, stock) VALUES
+('PROD001', 'Televisor LED', 800000, 10),
+('PROD002', 'Smartphone', 600000, 15),
+('PROD003', 'Laptop', 1200000, 5),
+('PROD004', 'Tablet', 400000, 8),
+('PROD005', 'Refrigerador', 1500000, 6),
+('PROD006', 'Microondas', 250000, 12),
+('PROD007', 'Impresora', 300000, 9),
+('PROD008', 'Cámara Digital', 500000, 7),
+('PROD009', 'Aspiradora', 180000, 20),
+('PROD010', 'Licuadora', 80000, 25);    
+-- Agregamos los clientes que tiene el comercio
+INSERT INTO clientes (id_clientes, nombre, apellido, direccion, telefono, correo, municipio, departamento, pais) VALUES
+('123456789', 'Ana', 'García', 'Calle 123', '3101234567', 'ana.garcia@gmail.com', 'Medellín', 'Antioquia', 'Colombia'),
+('987654321', 'Juan', 'Martínez', 'Carrera 456', '3159876543', 'juan.martinez@yahoo.com', 'Bogotá', 'Cundinamarca', 'Colombia'),
+('456789123', 'Laura', 'Gómez', 'Avenida 789', '3204567890', 'laura.gomez@hotmail.com', 'Cali', 'Valle del Cauca', 'Colombia'),
+('789123456', 'Carlos', 'López', 'Calle 456', '3177890123', 'carlos.lopez@gmail.com', 'Barranquilla', 'Atlántico', 'Colombia'),
+('234567890', 'María', 'Ramírez', 'Carrera 123', '3142345678', 'maria.ramirez@yahoo.com', 'Cartagena', 'Bolívar', 'Colombia');
+-- Al hacer una nueva compra se crea la factura con los datos del cliente y el producto a llevar
+INSERT INTO factura (num_factura, id_clientes, id_producto) VALUES
+('FAC001', '123456789', 'PROD001'),
+('FAC002', '987654321', 'PROD002'),
+('FAC003', '456789123', 'PROD003'),
+('FAC004', '789123456', 'PROD004'),
+('FAC005', '234567890', 'PROD005'),
+('FAC006', '123456789', 'PROD006'),
+('FAC007', '987654321', 'PROD007'),
+('FAC008', '456789123', 'PROD008'),
+('FAC009', '789123456', 'PROD009'),
+('FAC010', '234567890', 'PROD010');
+-- Por logica los datos deberian actualizarce en productos haciendo referencia a la factura que pertenece.
+UPDATE productos SET num_factura ='FAC001' WHERE id_producto = 'PROD001';
+UPDATE productos SET num_factura ='FAC002' WHERE id_producto = 'PROD002';
+UPDATE productos SET num_factura ='FAC003' WHERE id_producto = 'PROD003';
+UPDATE productos SET num_factura ='FAC004' WHERE id_producto = 'PROD004';
+UPDATE productos SET num_factura ='FAC005' WHERE id_producto = 'PROD005';
+UPDATE productos SET num_factura ='FAC006' WHERE id_producto = 'PROD006';
+UPDATE productos SET num_factura ='FAC007' WHERE id_producto = 'PROD007';
+UPDATE productos SET num_factura ='FAC008' WHERE id_producto = 'PROD008';
+UPDATE productos SET num_factura ='FAC009' WHERE id_producto = 'PROD009';
+UPDATE productos SET num_factura ='FAC0010' WHERE id_producto = 'PROD0010';
+
 
