@@ -119,13 +119,16 @@ INSERT INTO productos (id_producto, nombre, precio, stock) VALUES
 ('PROD008', 'Cámara Digital', 500000, 7),
 ('PROD009', 'Aspiradora', 180000, 20),
 ('PROD010', 'Licuadora', 80000, 25);    
+
 -- Agregamos los clientes que tiene el comercio
 INSERT INTO clientes (id_clientes, nombre, apellido, direccion, telefono, correo, municipio, departamento, pais) VALUES
 ('123456789', 'Ana', 'García', 'Calle 123', '3101234567', 'ana.garcia@gmail.com', 'Medellín', 'Antioquia', 'Colombia'),
 ('987654321', 'Juan', 'Martínez', 'Carrera 456', '3159876543', 'juan.martinez@yahoo.com', 'Bogotá', 'Cundinamarca', 'Colombia'),
 ('456789123', 'Laura', 'Gómez', 'Avenida 789', '3204567890', 'laura.gomez@hotmail.com', 'Cali', 'Valle del Cauca', 'Colombia'),
 ('789123456', 'Carlos', 'López', 'Calle 456', '3177890123', 'carlos.lopez@gmail.com', 'Barranquilla', 'Atlántico', 'Colombia'),
-('234567890', 'María', 'Ramírez', 'Carrera 123', '3142345678', 'maria.ramirez@yahoo.com', 'Cartagena', 'Bolívar', 'Colombia');
+('234567890', 'María', 'Ramírez', 'Carrera 123', '3142345678', 'maria.ramirez@yahoo.com', 'Cartagena', 'Bolívar', 'Colombia')
+('107781231','Dulce Maria','Cortes Santanilla','Carrera 4 N 4-28','3227812242','dulcortes@gmail.com','Garzon','Huila','Colombia');
+
 -- Al hacer una nueva compra se crea la factura con los datos del cliente y el producto a llevar
 INSERT INTO factura (num_factura, id_clientes, id_producto) VALUES
 ('FAC001', '123456789', 'PROD001'),
@@ -138,6 +141,7 @@ INSERT INTO factura (num_factura, id_clientes, id_producto) VALUES
 ('FAC008', '456789123', 'PROD008'),
 ('FAC009', '789123456', 'PROD009'),
 ('FAC010', '234567890', 'PROD010');
+
 -- Por logica los datos deberian actualizarce en productos haciendo referencia a la factura que pertenece.
 UPDATE productos SET num_factura ='FAC001' WHERE id_producto = 'PROD001';
 UPDATE productos SET num_factura ='FAC002' WHERE id_producto = 'PROD002';
