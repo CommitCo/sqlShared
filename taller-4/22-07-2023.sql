@@ -113,8 +113,8 @@ INSERT INTO productos (producCod, producNom, producpre, stock, estado) VALUES
 ('COD003', 'Mascarilla facial revitalizante', 30000, 70, 'A'),
 ('COD004', 'Aceite facial nutritivo', 25000, 50, 'A'),
 ('COD005', 'Exfoliante facial suave', 45000, 30, 'A'),
-('COD006', 'Crema reductora de abdomen', 20000, 120, 'A'),
-('COD007', 'Gel reafirmante para brazos', 15000, 150, 'A'),
+('COD006', 'Crema reductora de abdomen', 20000, 50, 'A'),
+('COD007', 'Gel reafirmante para brazos', 15000, 68, 'A'),
 ('COD008', 'Crema anticelulítica', 18000, 100, 'A'),
 ('COD009', 'Crema reafirmante de piernas', 70000, 90, 'A'),
 ('COD010', 'Gel reductor de cintura', 10000, 80, 'A'),
@@ -160,6 +160,3 @@ VALUES
 (13, '7890123456', 11, 'COD007', 3, '2023-06-17', '09:00:00', 'Venta de té', 'A'),
 (14, '4567890123', 3, NULL, NULL, '2023-06-18', '16:00:00', 'Masaje reductor', 'A'),
 (15, '9012345678', 7, 'COD015', 1, '2023-06-19', '15:00:00', 'Cuidado facial', 'A');
-
-
-
