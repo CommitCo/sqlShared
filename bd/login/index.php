@@ -5,7 +5,7 @@
     if (isset($_SESSION['user_id'])) {
         $records = $con->prepare('SELECT id, email, password FROM users WHERE id = :id');
         $records->execute();
-        $records $records->fetch(PDO::FETCH_ASSOC);
+        $results = $records->fetch(PDO::FETCH_ASSOC);
     
         $user = NULL;
 

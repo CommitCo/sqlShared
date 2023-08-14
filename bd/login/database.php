@@ -1,11 +1,11 @@
 <?php
-    $server = "3307";
+    $server = "localhost:3306";
     $username = "root";
     $password = "";
     $database = "login";
     try {
         $con = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
-    } catch (PDOExcetion $e) {
-        die('Connetion failed: '.$e->getMessage());
+    } catch (PDOException $e) {
+        die('Conexion fallada: '.$e->getMessage());
     }
-?>
+?> 
