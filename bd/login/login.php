@@ -16,7 +16,7 @@
             $_SESSION['user_id'] = $results['id'];
             header('Location: /login/index.php');
         } else {
-            $message = 'lo sentimos, la contraseña ingresada no coincide';
+            $message = 'lo sentimos, la password ingresada no coincide';
         }
     }
 ?>
@@ -26,7 +26,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <?php require 'partials/header.php'?>
@@ -36,8 +36,8 @@
 
     <h1>Ingresar</h1>
     <span>o <a href="Signup.php">Registrate</a></span>
-    <form action="login" method="POST">
-        <input type="email" name="email" placeholder="Ingrese Correo electronico">
+    <form action="login.php" method="POST">
+        <input type="text" name="email" placeholder="Ingrese Correo electronico">
         <input type="password" name="password" placeholder="Ingrese contraseña">
         <input type="submit" value="Ingresar">
     </form>

@@ -38,10 +38,10 @@
     <form action="signup.php" method="POST">
         <input name="nombres" type="text" placeholder="Ingrese nombre">
         <input name="apellidos" type="text" placeholder="Ingrese apellidos">
-        <input name="email" type="email" placeholder="Ingrese email">
+        <input name="email" type="text" placeholder="Ingrese email">
         <input name="password" type="password"placeholder="Ingrese contraseña">
         <h3>De acuerdo con los terminos y condiciones</h3>
-        <input type="submit" value="Guardar">
+        <input type="submit" value="Guardado">
     </form>
     <a href="login.php">¿Ya tengo una cuenta?</a>
 </body>
